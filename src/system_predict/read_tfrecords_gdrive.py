@@ -5,16 +5,17 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
 
 # 1. Configurações de Caminho
-SERVICE_ACCOUNT_FILE = '/home/superusuario/.config/gcloud/keys/mapbiomas-caatinga-cloud04-78950c04489a.json'
+# SERVICE_ACCOUNT_FILE = '/home/superusuario/.config/gcloud/keys/mapbiomas-caatinga-cloud04-78950c04489a.json'
+SERVICE_ACCOUNT_FILE = '/home/superusuario/.config/gcloud/keys/ee-solkancengine17-ef2f5f6fe840.json'
 LOCAL_BASE_DIR = '/home/superusuario/db_images'
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
 # Pastas que queremos copiar
 DRIVE_FOLDERS = [
-    'PATCHS_S2_Setembro_Caat',
-    'PATCHS_S2_Outbro_Caat',
+    'PATCHS_S2_Dezembro_Caat',
     'PATCHS_S2_Novembro_Caat',
-    'PATCHS_S2_Dezembro_Caat'
+    'PATCHS_S2_Outubro_Caat',
+    'PATCHS_S2_Setembro_Caat'   
 ]
 
 # 2. Autenticação
