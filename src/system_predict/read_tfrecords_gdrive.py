@@ -1,5 +1,6 @@
 import os
 import io
+import sys
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
@@ -19,9 +20,22 @@ DRIVE_FOLDERS = [
 ]
 
 # 2. Autenticação
-creds = service_account.Credentials.from_service_account_file(
-        SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-service = build('drive', 'v3', credentials=creds)
+try:
+    creds = service_account.Credentials.from_service_account_file(
+            SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    service = build('drive', 'v3', credentials=creds)
+
+    # TESTE DE CONEXÃO: Obtém informações sobre o usuário autenticado
+    # Para Contas de Serviço, o 'user' é a própria conta
+    about = service.about().get(fields="user").execute()
+    email_conectado = about['user']['emailAddress']
+    
+    print(f"✅ Conectado com sucesso!")
+    print(f"📧 Conta ativa: {email_conectado}")
+    
+except Exception as e:
+    print(f"❌ Falha na conexão: {e}")
+    sys.exit(1) # Para a execução se não conectar
 
 def download_files_from_folder(folder_name):
     print(f"\n--- Iniciando busca na pasta: {folder_name} ---")
