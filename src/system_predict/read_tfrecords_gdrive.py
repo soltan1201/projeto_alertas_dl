@@ -15,7 +15,7 @@ unicaConta= str(args.key_conta)
 
 SERVICE_ACCOUNT_FILE = '/home/superusuario/.config/gcloud/keys/mapbiomas-caatinga-cloud04-78950c04489a.json'
 if unicaConta == '4':
-    SERVICE_ACCOUNT_FILE = '/home/superuser/.config/gcloud/keys/mapbiomas-caatinga-cloud04-78950c04489a.json'
+    SERVICE_ACCOUNT_FILE = '/home/superusuario/.config/gcloud/keys/mapbiomas-caatinga-cloud04-78950c04489a.json'
 else: 
     SERVICE_ACCOUNT_FILE = '/home/superusuario/.config/gcloud/keys/ee-solkancengine17-ef2f5f6fe840.json'
 LOCAL_BASE_DIR = '/home/superusuario/db_images'
