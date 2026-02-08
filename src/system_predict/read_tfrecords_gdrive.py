@@ -1,22 +1,32 @@
 import os
 import io
 import sys
+import argparse
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
 
 # 1. Configurações de Caminho
-# SERVICE_ACCOUNT_FILE = '/home/superusuario/.config/gcloud/keys/mapbiomas-caatinga-cloud04-78950c04489a.json'
-SERVICE_ACCOUNT_FILE = '/home/superusuario/.config/gcloud/keys/ee-solkancengine17-ef2f5f6fe840.json'
+parser = argparse.ArgumentParser()
+parser.add_argument('key_conta', type=str,  default= True, help= "Especifica qual key Cloud conta será usada:" )
+args = parser.parse_args()
+unicaConta= str(args.key_conta)
+# 1. Configurações de Caminho
+
+SERVICE_ACCOUNT_FILE = '/home/superusuario/.config/gcloud/keys/mapbiomas-caatinga-cloud04-78950c04489a.json'
+if unicaConta == '4':
+    SERVICE_ACCOUNT_FILE = '/home/superuser/.config/gcloud/keys/mapbiomas-caatinga-cloud04-78950c04489a.json'
+else: 
+    SERVICE_ACCOUNT_FILE = '/home/superusuario/.config/gcloud/keys/ee-solkancengine17-ef2f5f6fe840.json'
 LOCAL_BASE_DIR = '/home/superusuario/db_images'
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
 # Pastas que queremos copiar
 DRIVE_FOLDERS = [
-    'PATCHS_S2_Dezembro_Caat',
-    'PATCHS_S2_Novembro_Caat',
-    'PATCHS_S2_Outubro_Caat',
-    'PATCHS_S2_Setembro_Caat'   
+    'PATCHS_S2_Dezembro_CAAT',
+    'PATCHS_S2_Novembro_CAAT',
+    'PATCHS_S2_Outubro_CAAT',
+    'PATCHS_S2_Setembro_CAAT'   
 ]
 
 # 2. Autenticação
