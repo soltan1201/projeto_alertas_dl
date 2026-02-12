@@ -8,10 +8,9 @@ lst_folders =  [
     'PATCHS_S2_Dezembro_CAAT', 'PATCHS_S2_Dezembro_Caat'
 ]
 
-for npath in lst_folders:
-    print("  ---------------------------------------------------------------")
+for cc, npath in enumerate(lst_folders):
+    print(f"------------- Building #{cc}    <> {npath}   -----------------------")
     path_end = os.path.join(path_base, npath)
-
     # Cria a pasta e todas as pastas pai (subdiretórios) se não existirem
     # Se já existir, o exist_ok=True impede que o Python lance um erro
     os.makedirs(path_end, exist_ok=True)
