@@ -1,9 +1,18 @@
 #!/bin/bash
 
+
+# Captura o primeiro argumento passado na chamada do script
+FOLDER_NAME=$1
+
+# Verifica se o usuário passou o argumento, se não, encerra com erro
+if [ -z "$FOLDER_NAME" ]; then
+    echo "Erro: Você precisa passar o nome da pasta. Ex: ./stitch_moisaics.sh NOME_DA_PASTA"
+    exit 1
+fi
 # 1. Ajuste os caminhos (Sem a barra final para evitar confusão)
-INPUT_FOLDER="/home/superusuario/db_images/predAlerts/PATCHS_S2_Dezembro_CAAT"
-FINAL_OUTPUT_DIR="/home/superusuario/db_images/rasters_alerts/PATCHS_S2_Dezembro_CAAT"
-OUTPUT_FILE="$FINAL_OUTPUT_DIR/PATCHS_S2_Dezembro_CAAT.tif"
+INPUT_FOLDER="/home/superusuario/db_images/predAlerts/$FOLDER_NAME"
+FINAL_OUTPUT_DIR="/home/superusuario/db_images/rasters_alerts/$FOLDER_NAME"
+OUTPUT_FILE="$FINAL_OUTPUT_DIR/$FOLDER_NAME.tif"
 
 # 2. Criar a pasta de saída
 mkdir -p "$FINAL_OUTPUT_DIR"

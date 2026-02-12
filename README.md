@@ -19,4 +19,4 @@ python predict_all_in_One.py /home/superusuario/db_images  /home/superusuario/db
 
 para juntar todos os .tif e salvar em um único arquivo 
 chmod +x stitch_mosaics.sh
-./stitch_mosaics.sh
+./stitch_mosaics.sh PATCHS_S2_Dezembro_CAAT
