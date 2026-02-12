@@ -14,7 +14,7 @@ LISTA_FOLDERS = [
 para predict usar em local 
 python predict_all_in_One.py /run/media/superuser/Almacen/imgDB  /run/media/superuser/Almacen/imgDB/predAlerts False
 no servidor 
-predict_all_in_One.py /home/superusuario/db_images  /home/superusuario/db_images/predAlerts True
+python predict_all_in_One.py /home/superusuario/db_images  /home/superusuario/db_images/predAlerts True
 
 
 para juntar todos os .tif e salvar em um único arquivo 
