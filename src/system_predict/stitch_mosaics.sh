@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # 1. Ajuste os caminhos (Sem a barra final para evitar confusão)
-INPUT_FOLDER="/home/superusuario/db_images/predAlerts/PATCHS_S2_Novembro_Caat"
-FINAL_OUTPUT_DIR="/home/superusuario/db_images/rasters_alerts/PATCHS_S2_Novembro_Caat"
-OUTPUT_FILE="$FINAL_OUTPUT_DIR/PATCHS_S2_Novembro_Caat.tif"
+INPUT_FOLDER="/home/superusuario/db_images/predAlerts/PATCHS_S2_Dezembro_CAAT"
+FINAL_OUTPUT_DIR="/home/superusuario/db_images/rasters_alerts/PATCHS_S2_Dezembro_CAAT"
+OUTPUT_FILE="$FINAL_OUTPUT_DIR/PATCHS_S2_Dezembro_CAAT.tif"
 
 # 2. Criar a pasta de saída
 mkdir -p "$FINAL_OUTPUT_DIR"
