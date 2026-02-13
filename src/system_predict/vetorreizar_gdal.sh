@@ -17,7 +17,7 @@ fi
 
 # Caminhos
 BASE_DIR="/home/superuser/db_images"
-INPUT_TIF="$BASE_DIR/predAlerts/$RASTER_NAME.tif"
+INPUT_TIF="$BASE_DIR/rasters_alerts/$RASTER_NAME.tif"
 OUTPUT_DIR="$BASE_DIR/vetor_alerts"
 OUTPUT_SHP="$OUTPUT_DIR/$RASTER_NAME.shp"
 OUTPUT_ZIP="$OUTPUT_DIR/$RASTER_NAME.zip"
