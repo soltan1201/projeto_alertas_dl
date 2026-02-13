@@ -1,9 +1,17 @@
 #!/bin/bash
+# Captura o primeiro argumento passado na chamada do script
+RASTER_NAME=$1
+
+# Verifica se o usuário passou o argumento, se não, encerra com erro
+if [ -z "$RASTER_NAME" ]; then
+    echo "Erro: Você precisa passar o nome da pasta. Ex: ./vetorreizar_gdal.sh NOME_DO_RASTER"
+    exit 1
+fi
 
 # Caminho do mosaico de entrada
-INPUT_TIF="/run/media/superuser/Almacen/imgDB/ALERTS_S2_Outubro_CAAT.tif"
+INPUT_TIF="/home/superuser/db_images/predAlerts/$RASTER_NAME.tif"
 # Nome do Shapefile de saída (sem a extensão .shp)
-OUTPUT_SHP="/run/media/superuser/Almacen/imgDB/Alertas_Outubro_Caatinga"
+OUTPUT_SHP="/home/superuser/db_images/vetor_alerts/$RASTER_NAME"
 
 echo "1. Criando máscara binária (Threshold > 0.5)..."
 gdal_calc.py -A "$INPUT_TIF" \
