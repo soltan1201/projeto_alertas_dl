@@ -16,7 +16,7 @@ if [ -z "$RASTER_NAME" ]; then
 fi
 
 # Caminhos
-BASE_DIR="/home/superuser/db_images"
+BASE_DIR="/home/superusuario/db_images"
 INPUT_TIF="$BASE_DIR/rasters_alerts/$RASTER_NAME.tif"
 OUTPUT_DIR="$BASE_DIR/vetor_alerts"
 OUTPUT_SHP="$OUTPUT_DIR/$RASTER_NAME.shp"
