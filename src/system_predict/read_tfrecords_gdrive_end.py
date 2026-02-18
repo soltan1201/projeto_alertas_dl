@@ -1,6 +1,7 @@
 import os
 import io
 import sys
+import time
 import argparse
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -48,7 +49,7 @@ except Exception as e:
     sys.exit(1) # Para a execução se não conectar
 
 def download_files_from_folder(folder_name):
-    print(f"\n--- Iniciando busca na pasta: {folder_name} ---")
+    print(f"\n--- Iniciando busca na pasta  --- Monitorando e Limpando: {folder_name} ---")
     
     # Busca o ID da pasta pelo nome
     query = f"name = '{folder_name}' and mimeType = 'application/vnd.google-apps.folder'"
@@ -78,10 +79,14 @@ def download_files_from_folder(folder_name):
         file_results = service.files().list(
             q=f"'{folder_id}' in parents and trashed = false",
             fields="nextPageToken, files(id, name)",
-            pageSize=1000,
+            pageSize=100,
             pageToken=next_page_token
         ).execute()
         files = file_results.get('files', [])
+
+        if not files:
+            print(f"Nenhum arquivo pendente em {folder_name}.")
+            break
 
 
         for file in files:
@@ -93,7 +98,7 @@ def download_files_from_folder(folder_name):
             if os.path.exists(file_path):
                 continue
             
-            print(f"[{files_baixados_conta + 1}] Baixando {file_name}...")
+            print(f"[{files_baixados_conta + 1}] ⬇️ Baixando {file_name}..." , end=" ", flush=True)
 
             try:
                 request = service.files().get_media(fileId=file_id)
@@ -104,6 +109,20 @@ def download_files_from_folder(folder_name):
                 while done is False:
                     status, done = downloader.next_chunk()
                 files_baixados_conta += 1
+
+                # 2. VERIFICAÇÃO E DELEÇÃO
+                # Se o arquivo foi gravado com sucesso no servidor local
+                if os.path.exists(file_path):
+                    local_size = os.path.getsize(file_path)
+                    drive_size = int(file.get('size', 0)) # Tamanho vindo do Google Drive
+
+                    # Comparação dupla: Existe localmente E o tamanho é IDENTICO ao do Drive?
+                    if local_size == drive_size and drive_size > 0:
+                        print(f"✅ Integridade confirmada ({local_size} bytes). 🗑️ Deletando...", end=" ")
+                        service.files().delete(fileId=file_id).execute()
+                        print("OK!")
+                    else:
+                        print(f"⚠️ Tamanho divergente (Local: {local_size} / Drive: {drive_size}). Mantendo.")
 
             except Exception as e:
                 print(f"Erro ao baixar {file_name}: {e}")
@@ -117,10 +136,17 @@ def download_files_from_folder(folder_name):
 
 # Execução principal
 if __name__ == '__main__':
-    if not os.path.exists(LOCAL_BASE_DIR):
-        os.makedirs(LOCAL_BASE_DIR)
+    
+    while True:
+        if not os.path.exists(LOCAL_BASE_DIR):
+            os.makedirs(LOCAL_BASE_DIR)
         
-    for folder in DRIVE_FOLDERS:
-        download_files_from_folder(folder)
+        print(f"\n[{time.strftime('%H:%M:%S')}] Iniciando ciclo de limpeza...")       
+
+        for folder in DRIVE_FOLDERS:
+            download_files_from_folder(folder)
         
-    print("\n✅ Todos os patches de TFRecords foram baixados com sucesso.")
+        print("\n✅ Todos os patches de TFRecords foram baixados com sucesso.")
+
+        print("\nCiclo concluído. Aguardando 1 hora para a próxima verificação...")
+        time.sleep(3600) # 3600 segundos = 1 hora
