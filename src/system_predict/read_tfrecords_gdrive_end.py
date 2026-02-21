@@ -119,8 +119,9 @@ def download_files_from_folder(folder_name):
                     # if local_size == drive_size and drive_size > 0:
                     # Lógica: Deleta se tamanhos batem OU se o Drive reportar 0 mas o local estiver ok (>0)
                     if local_size > 0 and (local_size == drive_size or drive_size == 0):
-                        print(f"✅ Integridade confirmada ({local_size} bytes). 🗑️ Deletando...", end=" ")
-                        service.files().delete(fileId=file_id, body={'trashed': True}).execute()
+                        local_mb = local_size / (1024 * 1024)
+                        print(f"✅ Integridade confirmada ({local_mb:.2f} MB). 🗑️ Movendo para lixeira...", end=" ")
+                        service.files().update(fileId=file_id, body={'trashed': True}).execute()
                         print("OK!")
                         files_baixados_conta += 1
                     else:
