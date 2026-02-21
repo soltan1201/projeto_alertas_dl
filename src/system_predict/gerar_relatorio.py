@@ -7,6 +7,7 @@ from datetime import datetime
 BASE_DIR = "/home/superusuario/db_images"
 FOLDERS = [
     "PATCHS_S2_Dezembro_Caat", 
+    "PATCHS_S2_Dezembro_CAAT", 
     "PATCHS_S2_Novembro_CAAT", 
     "PATCHS_S2_Setembro_CAAT", 
     "PATCHS_S2_Outubro_CAAT",
