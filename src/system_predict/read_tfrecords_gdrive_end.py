@@ -123,7 +123,7 @@ def download_files_from_folder(folder_name):
                         print(f"✅ Integridade confirmada ({local_mb:.2f} MB). 🗑️ Movendo para lixeira...", end=" ")
                         service.files().update(fileId=file_id, body={'trashed': True}).execute()
                         print("OK!")
-                        files_baixados_conta += 1
+
                     else:
                         print(f"⚠️ Tamanho divergente (Local: {local_size} / Drive: {drive_size}). Mantendo.")
 
