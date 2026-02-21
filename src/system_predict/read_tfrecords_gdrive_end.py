@@ -60,8 +60,7 @@ def download_files_from_folder(folder_name):
         print(f"Aviso: Pasta {folder_name} não encontrada no Drive.")
         return
 
-    folder_id = folders[0]['id']
-    
+    folder_id = folders[0]['id']    
     # Cria a pasta local correspondente
     dest_path = os.path.join(LOCAL_BASE_DIR, folder_name)
     os.makedirs(dest_path, exist_ok=True)
@@ -117,10 +116,13 @@ def download_files_from_folder(folder_name):
                     drive_size = int(file.get('size', 0)) # Tamanho vindo do Google Drive
 
                     # Comparação dupla: Existe localmente E o tamanho é IDENTICO ao do Drive?
-                    if local_size == drive_size and drive_size > 0:
+                    # if local_size == drive_size and drive_size > 0:
+                    # Lógica: Deleta se tamanhos batem OU se o Drive reportar 0 mas o local estiver ok (>0)
+                    if local_size > 0 and (local_size == drive_size or drive_size == 0):
                         print(f"✅ Integridade confirmada ({local_size} bytes). 🗑️ Deletando...", end=" ")
                         service.files().delete(fileId=file_id).execute()
                         print("OK!")
+                        files_baixados_conta += 1
                     else:
                         print(f"⚠️ Tamanho divergente (Local: {local_size} / Drive: {drive_size}). Mantendo.")
 
