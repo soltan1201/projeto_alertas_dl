@@ -35,8 +35,8 @@ def gerar_relatorio():
             print(f"⚠️ {folder}: Pasta não encontrada no servidor.")
 
     # Salva o JSON
-    with open(nome_arquivo, 'w', encoding='utf-8') as f:
-        json.dump(os.path.join(BASE_DIR, dict_reports), f, indent=4, ensure_ascii=False)
+    with open(os.path.join(BASE_DIR, nome_arquivo), 'w', encoding='utf-8') as f:
+        json.dump(dict_reports, f, indent=4, ensure_ascii=False)
     
     print(f"\n🚀 Relatório salvo com sucesso: {nome_arquivo}")
 
