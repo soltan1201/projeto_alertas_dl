@@ -36,7 +36,7 @@ def gerar_relatorio():
 
     # Salva o JSON
     with open(nome_arquivo, 'w', encoding='utf-8') as f:
-        json.dump(dict_reports, f, indent=4, ensure_ascii=False)
+        json.dump(os.path.join(BASE_DIR, dict_reports), f, indent=4, ensure_ascii=False)
     
     print(f"\n🚀 Relatório salvo com sucesso: {nome_arquivo}")
 
