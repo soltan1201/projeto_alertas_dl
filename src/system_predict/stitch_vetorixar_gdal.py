@@ -156,17 +156,21 @@ def merge_e_zip_mensal(pasta_mes):
 
 if __name__ == "__main__":
     start_time = datetime.now()
-    print(f"Iniciando processamento em massa: {start_time}")
+    
     parser = argparse.ArgumentParser()
     parser.add_argument('month_folder', type=str,  default= True, help= "Especifica o nome da pasta dentro do db_images/predAlerts que vai ser processada" )
     args = parser.parse_args()
     month_folder= args.month_folder
+
+    print(f"Iniciando processamento em massa: {start_time}")
     print(f"\n--- 📁 Iniciando Mês: {month_folder} ---")
+
+    # 1. Primeiro processa TODAS as grids para gerar os .shp individuais
     for grid in LST_ID_GRID:
         processar_grid_para_shp(month_folder, grid)
         
-        # Após terminar todas as grids do mês, faz o merge
-        merge_e_zip_mensal(month_folder)
+    # 2. SÓ DEPOIS que todas as grids acabarem, faz o Merge e o Zip uma única vez
+    merge_e_zip_mensal(month_folder)
     
     end_time = datetime.now()
     print(f"\n✨ Tudo pronto! Tempo total: {end_time - start_time}")
