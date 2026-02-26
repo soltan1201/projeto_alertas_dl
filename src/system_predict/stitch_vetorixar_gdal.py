@@ -7,7 +7,7 @@ from datetime import datetime
 
 # --- CONFIGURAÇÕES DE CAMINHOS ---
 # --- CONFIGURAÇÕES DE CAMINHOS ---
-BASE_DIR = "/home/superusuario/db_images"
+BASE_DIR = "/home/superusuario/db_images/predAlerts"
 # Pastas de entrada (Origem)
 LISTA_FOLDERS = [
     'PATCHS_S2_Setembro_CAAT', 
