@@ -52,7 +52,7 @@ def processar_grid_para_shp(pasta_mes, grid_id):
     search_pattern = os.path.join(input_path, f"*{grid_clean}*.tif")
     tif_files = glob.glob(search_pattern)
 
-    if not tif_files:
+    if len(tif_files) == 0:
         return # Pula se não encontrar nada para essa grid neste mês
 
     # 2. Define e cria pastas de saída espelhadas (Ex: rasters_alerts/PATCHS_S2_Novembro_CAAT/)
