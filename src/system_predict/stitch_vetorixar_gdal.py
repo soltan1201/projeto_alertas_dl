@@ -1,20 +1,15 @@
 import os
-import sys
+# import sys
 import glob
 import subprocess
-import shutil
+# import shutil
+import argparse
 from datetime import datetime
 
 # --- CONFIGURAÇÕES DE CAMINHOS ---
 # --- CONFIGURAÇÕES DE CAMINHOS ---
 BASE_DIR = "/home/superusuario/db_images/predAlerts"
-# Pastas de entrada (Origem)
-LISTA_FOLDERS = [
-    'PATCHS_S2_Setembro_CAAT', 
-    'PATCHS_S2_Outubro_CAAT',  
-    'PATCHS_S2_Novembro_CAAT', 
-    'PATCHS_S2_Dezembro_CAAT'
-]
+
 # Pastas de saída (Destino)
 OUTPUT_RASTER_BASE = os.path.join(BASE_DIR, "rasters_alerts")
 OUTPUT_VETOR_BASE = os.path.join(BASE_DIR, "vetor_alerts")
@@ -162,14 +157,16 @@ def merge_e_zip_mensal(pasta_mes):
 if __name__ == "__main__":
     start_time = datetime.now()
     print(f"Iniciando processamento em massa: {start_time}")
-    
-    for pasta in LISTA_FOLDERS:
-        print(f"\n--- 📁 Iniciando Mês: {pasta} ---")
-        for grid in LST_ID_GRID:
-            processar_grid_para_shp(pasta, grid)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('month_folder', type=str,  default= True, help= "Especifica o nome da pasta dentro do db_images/predAlerts que vai ser processada" )
+    args = parser.parse_args()
+    month_folder= args.month_folder
+    print(f"\n--- 📁 Iniciando Mês: {month_folder} ---")
+    for grid in LST_ID_GRID:
+        processar_grid_para_shp(month_folder, grid)
         
         # Após terminar todas as grids do mês, faz o merge
-        merge_e_zip_mensal(pasta)
+        merge_e_zip_mensal(month_folder)
     
     end_time = datetime.now()
     print(f"\n✨ Tudo pronto! Tempo total: {end_time - start_time}")

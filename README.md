@@ -25,3 +25,13 @@ chmod +x stitch_mosaics.sh
 Para vetorreizar o raster TIF precisa rodar esses dois comandos 
 chmod +x vetorreizar_gdal.sh
 ./vetorreizar_gdal.sh PATCHS_S2_Dezembro_CAAT
+
+
+LISTA_FOLDERS = [
+    'PATCHS_S2_Setembro_CAAT', 
+    'PATCHS_S2_Outubro_CAAT',  
+    'PATCHS_S2_Novembro_CAAT', 
+    'PATCHS_S2_Dezembro_CAAT'
+]
+Para rodar a vetorização na pasta dos patchs que passaram por predict 
+python stitch_vetorixar_gdal.py PATCHS_S2_Setembro_CAAT
