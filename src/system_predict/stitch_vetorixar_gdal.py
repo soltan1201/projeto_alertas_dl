@@ -71,11 +71,23 @@ def processar_grid_para_shp(pasta_mes, grid_id):
     print(f"📦 [{pasta_mes}] Grid {grid_id} -> Usando prefixo: {nome_base} com ({len(tif_files)} arquivos)")
 
     try:
-        # 1. Mosaico (gdal_merge)
+        # --- SOLUÇÃO PARA "Argument list too long" ---
+        # Criamos um arquivo de texto temporário com a lista de arquivos
+        list_file_path = os.path.join(OUTPUT_RASTER_BASE, f"list_{nome_base}.txt")
+        with open(list_file_path, 'w') as f:
+            for tif in tif_files:
+                f.write(f"{tif}\n")
+
+        # 1. Mosaico usando a flag --optfile (ou passando a lista via arquivo)
+        # O gdal_merge aceita ler os inputs de um arquivo usando a flag --optfile
         subprocess.run([
             "gdal_merge.py", "-ot", "Float32", "-n", "0", "-a_nodata", "0",
-            "-o", temp_tif, "--config", "GDAL_CACHEMEM", "2000"
-        ] + tif_files, check=True)  # , capture_output=True
+            "-o", temp_tif, "--config", "GDAL_CACHEMEM", "2000",
+            "--optfile", list_file_path  # <--- MÁGICA AQUI
+        ], check=True)
+
+        # Após o merge, podemos apagar a lista
+        os.remove(list_file_path)
 
         # 2. Máscara Binária (gdal_calc) (Threshold 0.5)
         subprocess.run([
