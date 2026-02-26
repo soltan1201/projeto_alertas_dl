@@ -119,8 +119,11 @@ def processar_grid_para_shp(pasta_mes, grid_id):
 
 def merge_e_zip_mensal(pasta_mes):
     out_vetor_dir = os.path.join(OUTPUT_VETOR_BASE, pasta_mes)
-    # Pega todos os .shp gerados na pasta do mês
-    shps_individuais = glob.glob(os.path.join(out_vetor_dir, "*.shp"))
+    # BUSCA CORRIGIDA: Pega todos os .shp, mas ignora o que começa com VETOR_FINAL
+    shps_individuais = [
+        f for f in glob.glob(os.path.join(out_vetor_dir, "*.shp")) 
+        if "VETOR_FINAL" not in os.path.basename(f)
+    ]
     
     if not shps_individuais:
         return
