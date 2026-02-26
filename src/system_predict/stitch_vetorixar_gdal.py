@@ -87,7 +87,7 @@ def processar_grid_para_shp(pasta_mes, grid_id):
         # 2. Máscara Binária (gdal_calc) (Threshold 0.5)
         subprocess.run([
             "gdal_calc.py", "-A", temp_tif, "--outfile", mask_tif,
-            "--calc", "A>0.5", "--NoDataValue", "0", "--type", "Byte", "--quiet"
+            "--calc", "A>0.5", "--NoDataValue", "0", "--type", "Byte", "--quiet", "--overwrite"
         ], check=True)
 
         # 3. Vetorização (gdal_polygonize)
@@ -138,7 +138,7 @@ def merge_e_zip_mensal(pasta_mes):
         # Usamos ogrmerge.py para juntar todos os Shapefiles
         # -single: junta tudo em uma única camada
         # -o: arquivo de saída
-        merge_cmd = ["ogrmerge.py", "-single", "-o", output_merged_shp] + shps_individuais
+        merge_cmd = ["ogrmerge.py", "-single", "-o", "-overwrite_ds", output_merged_shp] + shps_individuais
         subprocess.run(merge_cmd, check=True)
 
         # Compactar o resultado final
