@@ -72,9 +72,12 @@ isInServidor = str2bool(args.inServer)
 # PATH_TFRECORDS = "/home/superuser/db_images"
 # PATH_OUTPUT = "/home/superuser/db_images/predicts"
 LISTA_FOLDERS = [
-    'PATCHS_S2_Setembro_CAAT', 'PATCHS_S2_Outubro_CAAT',  
-    'PATCHS_S2_Novembro_CAAT', 'PATCHS_S2_Novembro_Caat',
-    'PATCHS_S2_Dezembro_CAAT', 'PATCHS_S2_Dezembro_Caat'
+    # 'PATCHS_S2_Setembro_CAAT', 
+    'PATCHS_S2_Outubro_CAAT',  
+    'PATCHS_S2_Novembro_CAAT', 
+    'PATCHS_S2_Novembro_Caat',
+    'PATCHS_S2_Dezembro_CAAT', 
+    'PATCHS_S2_Dezembro_Caat'
 ]
 
 
@@ -416,12 +419,12 @@ for name_folder in LISTA_FOLDERS[:]:
     if len(files) > 0:
         print(f"📄 Primeiro arquivo: {files[0]}")
     else:
-        print("❌ ERRO: Nenhum arquivo encontrado. Verifique se a pasta existe e se o Samba/Rclone montou os dados corretamente.")
+        print("❌ ERRO: Nenhum arquivo encontrado. Verifique se a pasta existe")
         # Lista o que existe na pasta pai para ajudar no debug
-        parent = os.path.dirname(PATH_TFRECORDS)
-        if os.path.exists(parent):
-            print(f"📁 Pastas disponíveis em {parent}: {os.listdir(parent)}")
-        sys.exit()
+        # parent = os.path.dirname(PATH_TFRECORDS)
+        # if os.path.exists(parent):
+        #     print(f"📁 Pastas disponíveis em {parent}: {os.listdir(parent)}")
+        # sys.exit()
     print(f"============== READING FOLDER {name_folder} ON REPOSITORY =================== ")
     folder_dir = os.path.join(PATH_TFRECORDS, name_folder)
     
