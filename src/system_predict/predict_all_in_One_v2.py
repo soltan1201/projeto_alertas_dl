@@ -40,7 +40,7 @@ BUFFER_SIZE = 1000       # Quantas imagens manter na RAM para embaralhar (Shuffl
 AUTOTUNE = tf.data.AUTOTUNE
 
 # Definição das Bandas (Mesma ordem do script GEE)
-BANDS_LIST = ['B2', 'B3', 'B4', 'B8', 'B11', 'B12', 'ndfia', 'ratio_brown', 'savi']
+BANDS_LIST = ['B4', 'B8', 'B11', 'ndfia', 'afvi', 'ui', 'awei']
 NUM_BANDS = len(BANDS_LIST)
 IMG_SHAPE = (256, 256)
 # Tamanhos
