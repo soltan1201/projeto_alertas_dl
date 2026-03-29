@@ -34,6 +34,7 @@ LISTA_FOLDERS = [
     'PATCHS_S2_Dezembro_CAAT'
 ]
 Para rodar a vetorização na pasta dos patchs que passaram por predict 
-python stitch_vetorixar_gdal.py PATCHS_S2_Setembro_CAAT
+se quizer vetorizar primeiro então colocar o --vetorizar 
+python stitch_vetorixar_gdal.py PATCHS_S2_Setembro_CAAT --vetorizar
 python stitch_vetorixar_gdal.py PATCHS_S2_Outubro_CAAT
 python stitch_vetorixar_gdal.py PATCHS_S2_Novembro_CAAT

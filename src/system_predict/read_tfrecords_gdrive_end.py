@@ -24,10 +24,12 @@ SCOPES = ['https://www.googleapis.com/auth/drive']
 
 # Pastas que queremos copiar
 DRIVE_FOLDERS = [
-    'PATCHS_S2_Dezembro_CAAT',
-    'PATCHS_S2_Novembro_CAAT',
-    'PATCHS_S2_Outubro_CAAT',
-    'PATCHS_S2_Setembro_CAAT'   
+    'PATCHS_S2_Janeiro_CAAT',
+    'PATCHS_S2_Fevereiro_CAAT',    
+    # 'PATCHS_S2_Dezembro_CAAT',
+    # 'PATCHS_S2_Novembro_CAAT',
+    # 'PATCHS_S2_Outubro_CAAT',
+    # 'PATCHS_S2_Setembro_CAAT'   
 ]
 
 # 2. Autenticação
