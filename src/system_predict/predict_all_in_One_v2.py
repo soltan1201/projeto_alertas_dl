@@ -72,7 +72,15 @@ isInServidor = str2bool(args.inServer)
 # PATH_TFRECORDS = "/home/superuser/db_images"
 # PATH_OUTPUT = "/home/superuser/db_images/predicts"
 LISTA_FOLDERS = [
-    # 'PATCHS_S2_Setembro_CAAT', 
+    'PATCHS_S2_Janeiro_CAAT',
+    'PATCHS_S2_Fevereiro_CAAT', 
+    'PATCHS_S2_Marco_CAAT',
+    'PATCHS_S2_Abril_CAAT',
+    'PATCHS_S2_Maio_CAAT',
+    'PATCHS_S2_Junho_CAAT',
+    'PATCHS_S2_Junlo_CAAT',
+    'PATCHS_S2_Agosto_CAAT',
+    'PATCHS_S2_Setembro_CAAT', 
     'PATCHS_S2_Outubro_CAAT',  
     'PATCHS_S2_Novembro_CAAT', 
     'PATCHS_S2_Novembro_Caat',

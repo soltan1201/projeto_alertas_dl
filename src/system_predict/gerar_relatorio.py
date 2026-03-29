@@ -6,11 +6,21 @@ from datetime import datetime
 # Como criamos o link simbólico, podemos usar o caminho da home
 BASE_DIR = "/home/superusuario/db_images"
 FOLDERS = [
-    "PATCHS_S2_Dezembro_Caat", 
-    "PATCHS_S2_Dezembro_CAAT", 
-    "PATCHS_S2_Novembro_CAAT", 
-    "PATCHS_S2_Setembro_CAAT", 
+    'PATCHS_S2_Janeiro_CAAT',
+    'PATCHS_S2_Fevereiro_CAAT', 
+    'PATCHS_S2_Marco_CAAT',
+    'PATCHS_S2_Abril_CAAT',
+    'PATCHS_S2_Maio_CAAT',
+    'PATCHS_S2_Junho_CAAT',
+    'PATCHS_S2_Junlo_CAAT',
+    'PATCHS_S2_Agosto_CAAT',
+    "PATCHS_S2_Setembro_CAAT",
     "PATCHS_S2_Outubro_CAAT",
+    "PATCHS_S2_Novembro_CAAT", 
+    "PATCHS_S2_Dezembro_Caat", 
+    "PATCHS_S2_Dezembro_CAAT",    
+    
+
     "rasters_alerts"
 ]
 
