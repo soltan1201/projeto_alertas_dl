@@ -394,8 +394,8 @@ if isInServidor:
     # mudaram as bandas para ['B2', 'B3','B4', 'B8', 'B11', 'ndfia', 'afvi', 'ui', 'awei']
     # MODEL_PATH = "/home/superusuario/projetos/model_Siam_Swin_Unet/best_siam_swin_unet_ciclo1_aum_v2.keras"
     # mudaram as bandas e foram reduzidas ['B4', 'B8', 'B11', 'ndfia', 'afvi', 'ui', 'awei']
-    MODEL_PATH= "/home/superusuario/projetos/model_Siam_Swin_Unet/best_siam_swin_unet_ciclo1_aum_v3.keras"
-    # MODEL_PATH= "/home/superusuario/projetos/model_Siam_Swin_Unet/best_siam_swin_unet_ciclo1_aum_v4_wet.keras"
+    # MODEL_PATH= "/home/superusuario/projetos/model_Siam_Swin_Unet/best_siam_swin_unet_ciclo1_aum_v3.keras"
+    MODEL_PATH= "/home/superusuario/projetos/model_Siam_Swin_Unet/best_siam_swin_unet_ciclo1_aum_v4_wet.keras"
     
 else:
     MODEL_PATH = "/home/superuser/Dados/projAlertas/proj_alertas_DL/src/model/best_siam_swin_unet_ciclo2.keras"

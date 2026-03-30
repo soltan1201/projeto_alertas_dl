@@ -18,9 +18,7 @@ FOLDERS = [
     "PATCHS_S2_Outubro_CAAT",
     "PATCHS_S2_Novembro_CAAT", 
     "PATCHS_S2_Dezembro_Caat", 
-    "PATCHS_S2_Dezembro_CAAT",    
-    
-
+    "PATCHS_S2_Dezembro_CAAT", 
     "rasters_alerts"
 ]
 
