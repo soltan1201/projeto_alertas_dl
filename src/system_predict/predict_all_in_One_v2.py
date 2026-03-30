@@ -417,7 +417,7 @@ except Exception as e:
     print(f"Erro ao carregar modelo: {e}")
 
 # --- 2. LOOP DE PREDIÇÃO E ESCRITA ---
-for name_folder in LISTA_FOLDERS[:]:
+for name_folder in LISTA_FOLDERS[:2]:
     pattern = os.path.join(PATH_TFRECORDS, name_folder, "*.tfrecord.gz")
     print(f"🔍 Buscando em: {pattern}")
 
